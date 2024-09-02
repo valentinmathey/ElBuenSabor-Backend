@@ -23,7 +23,9 @@ public class UserServiceImpl implements UserService{
     public void createUser(){
         User user = new User("bauti", "1234", "estudiante");
         User user2 = new User ("maximo","JohnWick2001","estudiante");
+        User user3 = new User("valentin", "12345", "estudiante");
         userRepository.save(user);
         userRepository.save(user2);
+        userRepository.save(user3);
     }
 }
