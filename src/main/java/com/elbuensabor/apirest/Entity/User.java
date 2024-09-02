@@ -5,6 +5,8 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.List;
+
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
@@ -18,6 +20,10 @@ public class User {
     private String name;
     private String password;
     private String role;
+
+    @OneToMany(mappedBy = "user")
+    private List<Order> orders;
+
 
     public User(String name, String password, String role) {
         this.name = name;
