@@ -1,33 +1,38 @@
 package com.elbuensabor.apirest.Entity;
 
+import com.elbuensabor.apirest.Enums.Role;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-@Table (name = "USERS")
+@Builder
+@Table (name = "USER")
 @Entity
 public class User {
 
     @Id
     @GeneratedValue (strategy = GenerationType.AUTO)
     private Long id;
+
+    @Column(name = "name")
     private String name;
+
+    @Column(name = "password")
     private String password;
-    private String role;
 
-    @OneToMany(mappedBy = "user")
-    private List<Order> orders;
+    @Enumerated(EnumType.STRING)
+    @Column(name = "role")
+    private Role role;
 
+    @OneToMany(mappedBy = "orders", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<Order> orders = new ArrayList<>();
 
-    public User(String name, String password, String role) {
-        this.name = name;
-        this.password = password;
-        this.role = role;
-    }
 }

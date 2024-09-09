@@ -1,31 +1,68 @@
 package com.elbuensabor.apirest.Service;
 
 import com.elbuensabor.apirest.Entity.User;
+import com.elbuensabor.apirest.Exception.MiException;
 import com.elbuensabor.apirest.Repository.UserRepository;
 import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
 import java.util.List;
 
 @Service
-public class UserServiceImpl implements UserService{
+public class UserServiceImpl implements UserService {
 
     @Autowired
-    UserRepository userRepository;
+    private UserRepository userRepository;
 
     @Override
-    public List<User> findAllUsers() {
+    public List<User> getAllUsers() {
         return userRepository.findAll();
     }
 
+    @Override
+    public User getUserById(Long id) throws MiException {
+        return userRepository.findById(id)
+                .orElseThrow(() -> new MiException("User not found with id: " + id));
+    }
+
+    @Override
     @Transactional
-    public void createUser(){
-        User user = new User("bauti", "1234", "estudiante");
-        User user2 = new User ("maximo","JohnWick2001","estudiante");
-        User user3 = new User("valentin", "12345", "estudiante");
-        userRepository.save(user);
-        userRepository.save(user2);
-        userRepository.save(user3);
+    public User createUser(User user) throws MiException {
+        try {
+            return userRepository.save(user);
+        } catch (Exception e) {
+            throw new MiException("Error creating user!");
+        }
+    }
+
+    @Override
+    @Transactional
+    public User updateUser(Long id, User user) throws MiException {
+        User existingUser = userRepository.findById(id)
+                .orElseThrow(() -> new MiException("User not found with id: " + id));
+
+        existingUser.setName(user.getName());
+        existingUser.setPassword(user.getPassword());
+        existingUser.setRole(user.getRole());
+        existingUser.setOrders(user.getOrders());
+
+        try {
+            return userRepository.save(existingUser);
+        } catch (Exception e) {
+            throw new MiException("Error updating user!");
+        }
+    }
+
+    @Override
+    @Transactional
+    public void deleteUser(Long id) throws MiException {
+        User existingUser = userRepository.findById(id)
+                .orElseThrow(() -> new MiException("User not found with id: " + id));
+
+        try {
+            userRepository.delete(existingUser);
+        } catch (Exception e) {
+            throw new MiException("Error deleting user!");
+        }
     }
 }
