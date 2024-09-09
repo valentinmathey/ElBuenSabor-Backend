@@ -12,7 +12,7 @@ import java.util.List;
 
 @RestController
 public class UserController {
-
+    /*
     @Autowired
     UserService userService;
 
@@ -29,4 +29,6 @@ public class UserController {
         userServiceImpl.createUser();
         return "Se creo un nuevo usuario";
     }
+
+     */
 }
