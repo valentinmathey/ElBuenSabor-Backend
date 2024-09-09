@@ -6,6 +6,7 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.hibernate.envers.Audited;
 
 import java.util.Date;
 
@@ -15,6 +16,7 @@ import java.util.Date;
 @Builder
 @Table(name = "INVOICE")
 @Entity
+@Audited
 public class Invoice {
 
     @Id
