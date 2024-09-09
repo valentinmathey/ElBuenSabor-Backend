@@ -59,6 +59,7 @@ public class Order {
     private Invoice invoice;
 
     @OneToMany(mappedBy = "order", cascade = CascadeType.ALL, orphanRemoval = true)
+    @Builder.Default
     private List<OrderDetail> orderDetails = new ArrayList<>();
 }
 

@@ -24,13 +24,29 @@ repositories {
 }
 
 dependencies {
+	// Spring Boot starter JPA y WEB
 	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
 	implementation 'org.springframework.boot:spring-boot-starter-web'
+
+	// Starter de Spring Data REST: expone automáticamente repositorios JPA como APIs RESTful
+	implementation 'org.springframework.boot:spring-boot-starter-data-rest'
+
+	// Hibernate Envers para auditoría
+	implementation 'org.hibernate.orm:hibernate-envers'
+
+	// Lombok para simplificar la escritura de código
 	compileOnly 'org.projectlombok:lombok'
-	runtimeOnly 'com.h2database:h2'
 	annotationProcessor 'org.projectlombok:lombok'
+
+	// H2 como base de datos en memoria para desarrollo y pruebas
+	runtimeOnly 'com.h2database:h2'
+
+	// Starter de pruebas para Spring Boot: incluye JUnit, Mockito, y herramientas para pruebas unitarias e integrales
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
 	testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
+
+	// Herramienta para generar documentación de APIs REST usando MockMvc en pruebas
+	testImplementation 'org.springframework.restdocs:spring-restdocs-mockmvc'
 }
 
 tasks.named('test') {

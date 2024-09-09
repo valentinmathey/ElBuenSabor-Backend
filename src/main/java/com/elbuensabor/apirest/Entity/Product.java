@@ -47,7 +47,7 @@ public class Product {
     @Column(name = "photo")
     private String photo;
 
-    @Column(name = "recipe")
+    @Column(name = "recipe", length = 1500)
     private String recipe;
 
     @ManyToOne
@@ -59,6 +59,7 @@ public class Product {
     private Category category;
 
     @OneToMany(mappedBy = "product", cascade = CascadeType.ALL, orphanRemoval = true)
+    @Builder.Default
     private List<OrderDetail> orderDetails = new ArrayList<>();
 }
 

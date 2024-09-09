@@ -25,5 +25,6 @@ public class UnitOfMeasure {
         private String name;
 
         @OneToMany(mappedBy = "product")
+        @Builder.Default
         private List<Product> products = new ArrayList<>();
 }

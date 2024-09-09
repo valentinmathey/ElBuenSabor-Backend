@@ -35,6 +35,7 @@ public class Address {
     private Client client;
 
     @OneToMany(mappedBy = "address", cascade = CascadeType.ALL, orphanRemoval = true)
+    @Builder.Default
     private List<Order> orders = new ArrayList<>();
 }
 
