@@ -34,9 +34,11 @@ public class Client {
     private String email;
 
     @OneToMany(mappedBy = "client",cascade = CascadeType.ALL, orphanRemoval = true)
+    @Builder.Default
     private List<Order> orders = new ArrayList<>();
 
     @OneToMany(mappedBy = "client", cascade = CascadeType.ALL, orphanRemoval = true)
+    @Builder.Default
     private List<Address> address = new ArrayList<>();
 }
 
