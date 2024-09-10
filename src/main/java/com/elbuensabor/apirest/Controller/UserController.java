@@ -1,34 +1,49 @@
 package com.elbuensabor.apirest.Controller;
 
 import com.elbuensabor.apirest.Entity.User;
-import com.elbuensabor.apirest.Service.UserService;
 import com.elbuensabor.apirest.Service.UserServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+@CrossOrigin(origins = "*")
 @RestController
+@RequestMapping("/users")
 public class UserController {
-    /*
-    @Autowired
-    UserService userService;
 
     @Autowired
-    UserServiceImpl userServiceImpl;
+    private UserServiceImpl userServiceImpl;
 
-    @GetMapping("/findAllUsers")
-    List<User> findAllUsers(){
-        return userService.findAllUsers();
+    @GetMapping
+    public List<User> getAllUsers() {
+        return userServiceImpl.getAllUsers();
     }
 
-    @PostMapping("/CreateUser")
-    public String userCreate(){
-        userServiceImpl.createUser();
-        return "Se creo un nuevo usuario";
+    @GetMapping("/{id}")
+    public ResponseEntity<User> getUserById(@PathVariable Long id) {
+        User user = userServiceImpl.getUserById(id);
+        return ResponseEntity.ok(user);
     }
 
-     */
+    @PostMapping
+    public ResponseEntity<User> createUser(@RequestBody User user) {
+        User newUser = userServiceImpl.createUser(user);
+        return ResponseEntity.status(HttpStatus.CREATED).body(newUser);
+    }
+
+    @PutMapping("/{id}")
+    public ResponseEntity<User> updateUser(@PathVariable Long id, @RequestBody User user) {
+        User updatedUser = userServiceImpl.updateUser(id, user);
+        return ResponseEntity.ok(updatedUser);
+    }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Void> deleteUser(@PathVariable Long id) {
+        userServiceImpl.deleteUser(id);
+        return ResponseEntity.noContent().build();
+    }
 }
+
