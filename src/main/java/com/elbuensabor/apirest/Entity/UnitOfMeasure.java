@@ -6,7 +6,6 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.hibernate.envers.Audited;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -26,7 +25,7 @@ public class UnitOfMeasure {
         @Column(name = "name")
         private String name;
 
-        @OneToMany(mappedBy = "product")
+        @OneToMany(mappedBy = "unitOfMeasure")
         @Builder.Default
         private List<Product> products = new ArrayList<>();
 }

@@ -1,7 +1,7 @@
 package com.elbuensabor.apirest.Controller;
 
-import com.elbuensabor.apirest.Entity.OrderDetail;
-import com.elbuensabor.apirest.Service.OrderDetailServiceImpl;
+import com.elbuensabor.apirest.Entity.RequestDetail;
+import com.elbuensabor.apirest.Service.RequestDetailServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -15,29 +15,29 @@ import java.util.List;
 public class OrderDetailController {
 
     @Autowired
-    private OrderDetailServiceImpl orderDetailServiceImpl;
+    private RequestDetailServiceImpl orderDetailServiceImpl;
 
     @GetMapping
-    public List<OrderDetail> getAllOrderDetails() {
+    public List<RequestDetail> getAllOrderDetails() {
         return orderDetailServiceImpl.getAllOrderDetails();
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<OrderDetail> getOrderDetailById(@PathVariable Long id) {
-        OrderDetail orderDetail = orderDetailServiceImpl.getOrderDetailById(id);
-        return ResponseEntity.ok(orderDetail);
+    public ResponseEntity<RequestDetail> getOrderDetailById(@PathVariable Long id) {
+        RequestDetail requestDetail = orderDetailServiceImpl.getOrderDetailById(id);
+        return ResponseEntity.ok(requestDetail);
     }
 
     @PostMapping
-    public ResponseEntity<OrderDetail> createOrderDetail(@RequestBody OrderDetail orderDetail) {
-        OrderDetail newOrderDetail = orderDetailServiceImpl.createOrderDetail(orderDetail);
-        return ResponseEntity.status(HttpStatus.CREATED).body(newOrderDetail);
+    public ResponseEntity<RequestDetail> createOrderDetail(@RequestBody RequestDetail requestDetail) {
+        RequestDetail newRequestDetail = orderDetailServiceImpl.createOrderDetail(requestDetail);
+        return ResponseEntity.status(HttpStatus.CREATED).body(newRequestDetail);
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<OrderDetail> updateOrderDetail(@PathVariable Long id, @RequestBody OrderDetail orderDetail) {
-        OrderDetail updatedOrderDetail = orderDetailServiceImpl.updateOrderDetail(id, orderDetail);
-        return ResponseEntity.ok(updatedOrderDetail);
+    public ResponseEntity<RequestDetail> updateOrderDetail(@PathVariable Long id, @RequestBody RequestDetail requestDetail) {
+        RequestDetail updatedRequestDetail = orderDetailServiceImpl.updateOrderDetail(id, requestDetail);
+        return ResponseEntity.ok(updatedRequestDetail);
     }
 
     @DeleteMapping("/{id}")

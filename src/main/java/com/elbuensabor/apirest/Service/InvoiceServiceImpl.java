@@ -47,7 +47,7 @@ public class InvoiceServiceImpl implements InvoiceService {
         existingInvoice.setDiscount(invoice.getDiscount());
         existingInvoice.setPaymentMethod(invoice.getPaymentMethod());
         existingInvoice.setTotal(invoice.getTotal());
-        existingInvoice.setOrder(invoice.getOrder());
+        existingInvoice.setRequest(invoice.getRequest());
 
         try {
             return invoiceRepository.save(existingInvoice);
