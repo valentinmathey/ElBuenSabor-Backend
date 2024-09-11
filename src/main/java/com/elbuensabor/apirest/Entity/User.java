@@ -36,6 +36,6 @@ public class User {
 
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
     @Builder.Default
-    private List<Request> requests = new ArrayList<>();
+    private List<SalesOrder> salesOrders = new ArrayList<>();
 
 }

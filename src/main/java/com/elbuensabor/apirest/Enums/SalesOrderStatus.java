@@ -1,6 +1,6 @@
 package com.elbuensabor.apirest.Enums;
 
-public enum RequestStatus {
+public enum SalesOrderStatus {
     PREPARATION("preparation"),
     PENDING("pending"),
     CANCELED("canceled"),
@@ -9,7 +9,7 @@ public enum RequestStatus {
 
     private String value;
 
-    RequestStatus(String value) {
+    SalesOrderStatus(String value) {
         this.value = value;
     }
 

@@ -38,6 +38,6 @@ public class Address {
 
     @OneToMany(mappedBy = "address", cascade = CascadeType.ALL, orphanRemoval = true)
     @Builder.Default
-    private List<Request> requests = new ArrayList<>();
+    private List<SalesOrder> salesOrders = new ArrayList<>();
 }
 

@@ -37,7 +37,7 @@ public class Client {
 
     @OneToMany(mappedBy = "client",cascade = CascadeType.ALL, orphanRemoval = true)
     @Builder.Default
-    private List<Request> requests = new ArrayList<>();
+    private List<SalesOrder> salesOrders = new ArrayList<>();
 
     @OneToMany(mappedBy = "client", cascade = CascadeType.ALL, orphanRemoval = true)
     @Builder.Default

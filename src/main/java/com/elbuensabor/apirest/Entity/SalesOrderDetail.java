@@ -11,10 +11,10 @@ import org.hibernate.envers.Audited;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-@Table(name = "REQUEST_DETAIL")
+@Table(name = "SALES_ORDER_DETAIL")
 @Entity
 @Audited
-public class RequestDetail {
+public class SalesOrderDetail {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -27,8 +27,8 @@ public class RequestDetail {
     private Double subtotal;
 
     @ManyToOne
-    @JoinColumn(name = "order_id")
-    private Request request;
+    @JoinColumn(name = "sales_order_id")
+    private SalesOrder salesOrder;
 
     @ManyToOne
     @JoinColumn(name = "product_id")

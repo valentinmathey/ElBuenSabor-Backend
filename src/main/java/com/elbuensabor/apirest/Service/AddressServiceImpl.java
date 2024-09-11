@@ -44,7 +44,7 @@ public class AddressServiceImpl implements AddressService {
         existingAddress.setNumber(address.getNumber());
         existingAddress.setCity(address.getCity());
         existingAddress.setClient(address.getClient());
-        existingAddress.setRequests(address.getRequests());
+        existingAddress.setSalesOrders(address.getSalesOrders());
 
         try {
             return addressRepository.save(existingAddress);

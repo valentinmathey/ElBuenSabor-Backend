@@ -53,7 +53,7 @@ public class ProductServiceImpl implements ProductService {
         existingProduct.setRecipe(product.getRecipe());
         existingProduct.setUnitOfMeasure(product.getUnitOfMeasure());
         existingProduct.setCategory(product.getCategory());
-        existingProduct.setRequestDetails(product.getRequestDetails());
+        existingProduct.setSalesOrderDetails(product.getSalesOrderDetails());
 
         try {
             return productRepository.save(existingProduct);
