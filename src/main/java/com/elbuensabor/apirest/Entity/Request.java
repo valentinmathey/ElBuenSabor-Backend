@@ -1,7 +1,7 @@
 package com.elbuensabor.apirest.Entity;
 
 import com.elbuensabor.apirest.Enums.DeliveryType;
-import com.elbuensabor.apirest.Enums.OrderStatus;
+import com.elbuensabor.apirest.Enums.RequestStatus;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -18,10 +18,10 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-@Table(name = "ORDER")
+@Table(name = "REQUEST")
 @Entity
 @Audited
-public class Order {
+public class Request {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -32,7 +32,7 @@ public class Order {
 
     @Enumerated(EnumType.STRING)
     @Column(name = "status")
-    private OrderStatus status;
+    private RequestStatus status;
 
     @Column(name = "estimated_delivery_time")
     private Date estimatedDeliveryTime;
@@ -60,8 +60,8 @@ public class Order {
     @JoinColumn(name = "invoice_id")
     private Invoice invoice;
 
-    @OneToMany(mappedBy = "order", cascade = CascadeType.ALL, orphanRemoval = true)
+    @OneToMany(mappedBy = "request", cascade = CascadeType.ALL, orphanRemoval = true)
     @Builder.Default
-    private List<OrderDetail> orderDetails = new ArrayList<>();
+    private List<RequestDetail> requestDetails = new ArrayList<>();
 }
 

@@ -38,8 +38,8 @@ dependencies {
 	compileOnly 'org.projectlombok:lombok'
 	annotationProcessor 'org.projectlombok:lombok'
 
-	// H2 como base de datos en memoria para desarrollo y pruebas
-	runtimeOnly 'com.h2database:h2'
+	// MySQL como base de datos
+	runtimeOnly 'com.mysql:mysql-connector-j'
 
 	// Starter de pruebas para Spring Boot: incluye JUnit, Mockito, y herramientas para pruebas unitarias e integrales
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'

@@ -11,10 +11,10 @@ import org.hibernate.envers.Audited;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-@Table(name = "ORDER_DETAIL")
+@Table(name = "REQUEST_DETAIL")
 @Entity
 @Audited
-public class OrderDetail {
+public class RequestDetail {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -28,7 +28,7 @@ public class OrderDetail {
 
     @ManyToOne
     @JoinColumn(name = "order_id")
-    private Order order;
+    private Request request;
 
     @ManyToOne
     @JoinColumn(name = "product_id")

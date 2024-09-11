@@ -1,7 +1,7 @@
 package com.elbuensabor.apirest.Controller;
 
-import com.elbuensabor.apirest.Entity.Order;
-import com.elbuensabor.apirest.Service.OrderServiceImpl;
+import com.elbuensabor.apirest.Entity.Request;
+import com.elbuensabor.apirest.Service.RequestServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -15,29 +15,29 @@ import java.util.List;
 public class OrderController {
 
     @Autowired
-    private OrderServiceImpl orderServiceImpl;
+    private RequestServiceImpl orderServiceImpl;
 
     @GetMapping
-    public List<Order> getAllOrders() {
+    public List<Request> getAllOrders() {
         return orderServiceImpl.getAllOrders();
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<Order> getOrderById(@PathVariable Long id) {
-        Order order = orderServiceImpl.getOrderById(id);
-        return ResponseEntity.ok(order);
+    public ResponseEntity<Request> getOrderById(@PathVariable Long id) {
+        Request request = orderServiceImpl.getOrderById(id);
+        return ResponseEntity.ok(request);
     }
 
     @PostMapping
-    public ResponseEntity<Order> createOrder(@RequestBody Order order) {
-        Order newOrder = orderServiceImpl.createOrder(order);
-        return ResponseEntity.status(HttpStatus.CREATED).body(newOrder);
+    public ResponseEntity<Request> createOrder(@RequestBody Request request) {
+        Request newRequest = orderServiceImpl.createOrder(request);
+        return ResponseEntity.status(HttpStatus.CREATED).body(newRequest);
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<Order> updateOrder(@PathVariable Long id, @RequestBody Order order) {
-        Order updatedOrder = orderServiceImpl.updateOrder(id, order);
-        return ResponseEntity.ok(updatedOrder);
+    public ResponseEntity<Request> updateOrder(@PathVariable Long id, @RequestBody Request request) {
+        Request updatedRequest = orderServiceImpl.updateOrder(id, request);
+        return ResponseEntity.ok(updatedRequest);
     }
 
     @DeleteMapping("/{id}")

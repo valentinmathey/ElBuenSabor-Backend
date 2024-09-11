@@ -53,7 +53,7 @@ public class Product {
     private String recipe;
 
     @ManyToOne
-    @JoinColumn(name = "unit_of_mesure")
+    @JoinColumn(name = "unit_of_measure_id")
     private UnitOfMeasure unitOfMeasure;
 
     @ManyToOne
@@ -62,6 +62,6 @@ public class Product {
 
     @OneToMany(mappedBy = "product", cascade = CascadeType.ALL, orphanRemoval = true)
     @Builder.Default
-    private List<OrderDetail> orderDetails = new ArrayList<>();
+    private List<RequestDetail> requestDetails = new ArrayList<>();
 }
 
