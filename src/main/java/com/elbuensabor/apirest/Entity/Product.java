@@ -62,6 +62,6 @@ public class Product {
 
     @OneToMany(mappedBy = "product", cascade = CascadeType.ALL, orphanRemoval = true)
     @Builder.Default
-    private List<RequestDetail> requestDetails = new ArrayList<>();
+    private List<SalesOrderDetail> salesOrderDetails = new ArrayList<>();
 }
 

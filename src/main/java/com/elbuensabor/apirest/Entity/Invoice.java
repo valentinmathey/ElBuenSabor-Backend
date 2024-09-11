@@ -40,7 +40,7 @@ public class Invoice {
     private Integer total;
 
     @OneToOne
-    @JoinColumn(name = "request_id")
-    private Request request;
+    @JoinColumn(name = "sales_order_id")
+    private SalesOrder salesOrder;
 }
 

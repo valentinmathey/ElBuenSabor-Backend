@@ -46,7 +46,7 @@ public class ClientServiceImpl implements ClientService {
         existingClient.setLastName(client.getLastName());
         existingClient.setPhone(client.getPhone());
         existingClient.setEmail(client.getEmail());
-        existingClient.setRequests(client.getRequests());
+        existingClient.setSalesOrders(client.getSalesOrders());
         existingClient.setAddress(client.getAddress());
 
         try {
